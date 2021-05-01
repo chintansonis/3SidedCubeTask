@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_pokemon_component"
+    app:startDestination="@id/pokeMonSearchListFragment">
+
+    <fragment
+        android:id="@+id/pokeMonDetailFragment"
+        android:name="com.example.threesidedcube.ui.fragments.PokeMonDetailFragment"
+        android:label="pokeMonDetailFragment"
+        tools:layout="@layout/fragment_pokemon_details">
+        <!--<argument
+            android:name="RegistrationRequest"
+            app:argType="com.genius.me.api.models.RegistrationRequest" />-->
+    </fragment>
+    <fragment
+        android:id="@+id/pokeMonSearchListFragment"
+        android:name="com.example.threesidedcube.ui.fragments.PokeMonSearchListFragment"
+        android:label="PokeMonSearchListFragment"
+        tools:layout="@layout/fragment_search_pokemons">
+        <action
+            android:id="@+id/action_pokeMonSearchListFragment_to_pokeMonDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/pokeMonDetailFragment"
+            />
+
+    </fragment>
+</navigation>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgPokeMon"
+        android:layout_width="@dimen/padding_80"
+        android:layout_height="@dimen/padding_80"
+        android:layout_marginStart="@dimen/padding_16"
+        android:layout_marginLeft="@dimen/padding_16"
+        android:layout_marginTop="@dimen/padding_16"
+        android:layout_marginBottom="@dimen/padding_16"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+        android:id="@+id/titleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_16"
+        android:layout_marginEnd="@dimen/padding_16"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:minLines="1"
+        android:text="PokeMon Name"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:isBold="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imgPokeMon"
+        app:layout_constraintTop_toTopOf="@+id/imgPokeMon" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">3SC Android Task</string>
+    <string name="search_pokemon">Search Pokemon</string>
+    <string name="no_results">No Results Found</string>
 </resources>
