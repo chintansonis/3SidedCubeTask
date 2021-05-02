@@ -6,6 +6,10 @@ import androidx.navigation.Navigation
 import com.example.threesidedcube.R
 
 class HomeActivity : AppCompatActivity() {
+
+    /**
+     * navigation controller
+     */
     private val navController by lazy {
         Navigation.findNavController(
             this,

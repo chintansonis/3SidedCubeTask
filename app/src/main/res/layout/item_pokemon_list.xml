@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
-        android:id="@+id/titleTv"
+        android:id="@+id/txtPokeMonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/padding_16"
@@ -29,7 +29,7 @@
         android:minLines="1"
         android:text="PokeMon Name"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_size_16"
         app:isBold="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

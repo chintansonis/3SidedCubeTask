@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">3SC Android Task</string>
+    <string name="err_no_internet_connected">Oops!! No internet Connected</string>
     <string name="search_pokemon">Search Pokemon</string>
     <string name="no_results">No Results Found</string>
+    <string name="yes">Yes</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">No</string>
 </resources>

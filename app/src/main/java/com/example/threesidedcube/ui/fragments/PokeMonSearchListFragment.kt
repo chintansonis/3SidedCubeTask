@@ -1,22 +1,33 @@
 package com.example.threesidedcube.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.threesidedcube.R
+import com.example.threesidedcube.api.models.ResponseHandler
+import com.example.threesidedcube.api.models.ResultsItem
+import com.example.threesidedcube.ui.HomeActivity
+import com.example.threesidedcube.ui.adapters.PokeMonRecyclerAdapter
+import com.example.threesidedcube.ui.viewmodels.PokeMonListViewModel
+import com.example.threesidedcube.utils.Functions
+import com.example.threesidedcube.utils.Injection
+import com.example.threesidedcube.utils.showOkDialog
 import kotlinx.android.synthetic.main.fragment_search_pokemons.*
-import kotlin.collections.emptyList
 
 
 class PokeMonSearchListFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var pokemonListViewModel: PokeMonListViewModel
+    private lateinit var pokeMonRecyclerAdapter: PokeMonRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,11 +43,99 @@ class PokeMonSearchListFragment : Fragment() {
     }
 
     private fun initviews() {
-   emptyList.setOnClickListener {
-       findNavController().navigate(R.id.action_pokeMonSearchListFragment_to_pokeMonDetailFragment)
-   }
+        // get the view model
+        pokemonListViewModel = ViewModelProvider(this, Injection.provideViewModelFactory())
+            .get(PokeMonListViewModel::class.java)
+
+        if (pokemonListViewModel.repoResult.value == null) {
+            if (Functions.isInternetConnected(requireActivity() as HomeActivity)) {
+                pokemonListViewModel.searchRepo("")
+            } else {
+                showOkDialog(
+                    (requireActivity() as HomeActivity).getString(R.string.ok),
+                    "",
+                    (requireActivity() as HomeActivity).resources.getString(R.string.err_no_internet_connected),
+                    false
+                )
+                showEmptyList(true)
+            }
+        }
+
+        emptyList.setOnClickListener {
+            /**
+             * implement jetpack navigation in order to navigate the pokemon detail screen
+             * References: https://github.com/android/architecture-components-samples/tree/main/NavigationBasicSample
+             */
+            findNavController().navigate(R.id.action_pokeMonSearchListFragment_to_pokeMonDetailFragment)
+        }
+        /**
+         * setup screlling for pagination where load data in chunks of 20.
+         */
+        setupScrollListener()
+
+        /**
+         * initilization of adapter
+         */
+        initAdapters()
+    }
+
+    private fun initAdapters() {
+        // add dividers between RecyclerView's row items
+        val decoration =
+            DividerItemDecoration(requireActivity() as HomeActivity, DividerItemDecoration.VERTICAL)
+        recyclerPokemonList.addItemDecoration(decoration)
+
+        pokeMonRecyclerAdapter =
+            PokeMonRecyclerAdapter(requireActivity() as HomeActivity, emptyList())
+        recyclerPokemonList.adapter = pokeMonRecyclerAdapter
+
+
+        /**
+         * Response handler
+         */
+        pokemonListViewModel.repoResult.observe(requireActivity() as HomeActivity) { result ->
+            when (result) {
+                is ResponseHandler.Success -> {
+                    Log.d("System out", "result from api" + result.data.size)
+                    showEmptyList(result.data.isEmpty())
+                    pokeMonRecyclerAdapter.notifyupdatedPokeMonList(result.data as ArrayList<ResultsItem>)
+                }
+                is ResponseHandler.Error -> {
+                    Toast.makeText(
+                        requireActivity() as HomeActivity,
+                        "\uD83D\uDE28 Wooops $result.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    showEmptyList(true)
+                }
+            }
+        }
     }
 
 
+    /**
+     * notify ui with empty data or recyclerview as per network result capicity
+     */
+    private fun showEmptyList(show: Boolean) {
+        if (show) {
+            emptyList.visibility = View.VISIBLE
+            recyclerPokemonList.visibility = View.GONE
+        } else {
+            emptyList.visibility = View.GONE
+            recyclerPokemonList.visibility = View.VISIBLE
+        }
+    }
 
+    private fun setupScrollListener() {
+        val layoutManager = recyclerPokemonList.layoutManager as LinearLayoutManager
+        recyclerPokemonList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val totalItemCount = layoutManager.itemCount
+                val visibleItemCount = layoutManager.childCount
+                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
+                pokemonListViewModel.listScrolled(visibleItemCount, lastVisibleItem, totalItemCount)
+            }
+        })
+    }
 }
