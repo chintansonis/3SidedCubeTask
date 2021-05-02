@@ -37,33 +37,32 @@ class PokeMonRepository {
         private const val POKEMON_PAGE_LIMIT = 20
     }
 
-/**
+    /**
      * Search repositories whose names match the query, exposed as a stream of data that will emit
      * every time we get more data from the network.
      */
 
-    suspend fun getSearchResultStream(query: String): Flow<ResponseHandler> {
+    suspend fun getSearchResultStream(): Flow<ResponseHandler> {
         lastRequestedPage = 20
-    Log.d("System out","first check test"+lastRequestedPage)
+        Log.d("System out", "first check test" + lastRequestedPage)
         inMemoryCache.clear()
-        requestAndSaveData(query)
+        requestData()
 
         return searchResults
     }
 
     suspend fun requestMore() {
         if (isRequestInProgress) return
-        lastRequestedPage=lastRequestedPage+20
-        requestAndSaveData("")
+        lastRequestedPage = lastRequestedPage + 20
+        requestData()
     }
 
-    private suspend fun requestAndSaveData(query: String): Boolean {
+    private suspend fun requestData(): Boolean {
         isRequestInProgress = true
         var successful = false
-        Log.d("System out","third check test"+lastRequestedPage)
         try {
-            val response = RestClient.getPokeMonWebService().getPokemonList(lastRequestedPage, POKEMON_PAGE_LIMIT)
-            Log.d("poekmonRepository", "response $response")
+            val response = RestClient.getPokeMonWebService()
+                .getPokemonList(lastRequestedPage, POKEMON_PAGE_LIMIT)
             val repos = response.results ?: emptyList()
             inMemoryCache.addAll(repos)
             searchResults.emit(ResponseHandler.Success(inMemoryCache))
@@ -76,15 +75,5 @@ class PokeMonRepository {
         isRequestInProgress = false
         return successful
     }
-
-    /*private fun reposByName(query: String): List<Repo> {
-        // from the in memory cache select only the repos whose name or description matches
-        // the query. Then order the results.
-        return inMemoryCache.filter {
-            it.name.contains(query, true) ||
-                (it.description != null && it.description.contains(query, true))
-        }.sortedWith(compareByDescending<Repo> { it.stars }.thenBy { it.name })
-    }*/
-
 
 }

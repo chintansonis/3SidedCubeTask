@@ -24,9 +24,10 @@ class PokeMonListViewModel(private val repository: PokeMonRepository) : ViewMode
     }
 
     private val queryLiveData = MutableLiveData<String>()
+
     val repoResult: LiveData<ResponseHandler> = queryLiveData.switchMap { queryString ->
         liveData {
-            val repos = repository.getSearchResultStream(queryString).asLiveData(Dispatchers.Main)
+            val repos = repository.getSearchResultStream().asLiveData(Dispatchers.Main)
             emitSource(repos)
         }
     }
@@ -44,12 +45,9 @@ class PokeMonListViewModel(private val repository: PokeMonRepository) : ViewMode
      */
     fun listScrolled(visibleItemCount: Int, lastVisibleItemPosition: Int, totalItemCount: Int) {
         if (visibleItemCount + lastVisibleItemPosition + VISIBLE_THRESHOLD >= totalItemCount) {
-            val immutableQuery = queryLiveData.value
-            /*if (immutableQuery != null) {*/
-                viewModelScope.launch {
-                    repository.requestMore()
-                }
-            //}
+            viewModelScope.launch {
+                repository.requestMore()
+            }
         }
     }
 }

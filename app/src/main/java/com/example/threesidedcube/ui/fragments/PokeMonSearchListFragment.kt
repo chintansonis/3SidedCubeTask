@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -77,6 +78,17 @@ class PokeMonSearchListFragment : Fragment() {
          * initilization of adapter
          */
         initAdapters()
+
+        /**
+         * querying result by search
+         */
+        initlizeEditTextOnChangeListner()
+    }
+
+    private fun initlizeEditTextOnChangeListner() {
+        edtSearchPokemon.doOnTextChanged { searchedText, start, count, after ->
+            pokeMonRecyclerAdapter.filter.filter(searchedText)
+        }
     }
 
     private fun initAdapters() {
@@ -134,6 +146,13 @@ class PokeMonSearchListFragment : Fragment() {
                 val totalItemCount = layoutManager.itemCount
                 val visibleItemCount = layoutManager.childCount
                 val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
+
+                /**
+                 * if user entered value for searching pokemon, search result would be displayed based on loaded data, therefore by checking edittext length function return from
+                 * here in order to prevent pagination call
+                 */
+                if (edtSearchPokemon.text.toString().isNotEmpty()) return
+
                 pokemonListViewModel.listScrolled(visibleItemCount, lastVisibleItem, totalItemCount)
             }
         })
