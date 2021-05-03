@@ -1,8 +1,8 @@
-package com.example.threesidedcube.api
+package com.example.threesidedcube.api.repository
 
 import android.util.Log
+import com.example.threesidedcube.api.RestClient
 import com.example.threesidedcube.api.models.ResponseHandler
-import com.example.threesidedcube.api.models.ResponsePokeMonList
 import com.example.threesidedcube.api.models.ResultsItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -27,7 +27,8 @@ class PokeMonRepository {
     private val searchResults = MutableSharedFlow<ResponseHandler>(replay = 1)
 
     // keep the last requested page. When the request is successful, increment the offset number.
-    private var lastRequestedPage = POKEMON_STARTING_PAGE_INDEX
+    private var lastRequestedPage =
+        POKEMON_STARTING_PAGE_INDEX
 
     // avoid triggering multiple requests in the same time
     private var isRequestInProgress = false
@@ -62,7 +63,9 @@ class PokeMonRepository {
         var successful = false
         try {
             val response = RestClient.getPokeMonWebService()
-                .getPokemonList(lastRequestedPage, POKEMON_PAGE_LIMIT)
+                .getPokemonList(lastRequestedPage,
+                    POKEMON_PAGE_LIMIT
+                )
             val repos = response.results ?: emptyList()
             inMemoryCache.addAll(repos)
             searchResults.emit(ResponseHandler.Success(inMemoryCache))

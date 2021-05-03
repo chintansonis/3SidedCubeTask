@@ -7,9 +7,8 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
-import com.example.threesidedcube.api.PokeMonRepository
+import com.example.threesidedcube.api.repository.PokeMonRepository
 import com.example.threesidedcube.api.models.ResponseHandler
-import com.example.threesidedcube.api.models.ResponsePokeMonList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

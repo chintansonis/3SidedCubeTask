@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -62,13 +63,6 @@ class PokeMonSearchListFragment : Fragment() {
             }
         }
 
-        emptyList.setOnClickListener {
-            /**
-             * implement jetpack navigation in order to navigate the pokemon detail screen
-             * References: https://github.com/android/architecture-components-samples/tree/main/NavigationBasicSample
-             */
-            findNavController().navigate(R.id.action_pokeMonSearchListFragment_to_pokeMonDetailFragment)
-        }
         /**
          * setup screlling for pagination where load data in chunks of 20.
          */

@@ -7,6 +7,9 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Filterable
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.threesidedcube.R
@@ -48,7 +51,15 @@ class PokeMonRecyclerAdapter(
         val splittedPokemonImageID=resultItemFilterList[position].url.substring(resultItemFilterList[position].url.lastIndexOf("/")-2)
         Glide.with(activity!!).load(AppConstants.getBaseImageUrl()+"/"+splittedPokemonImageID.replace("/","")+".png").placeholder(Functions.getCircularProgressDrawable(activity)).into(holder.itemView.imgPokeMon)
         holder.itemView.setOnClickListener {
-
+            /**
+             * implement jetpack navigation in order to navigate the pokemon detail screen
+             * References: https://github.com/android/architecture-components-samples/tree/main/NavigationBasicSample
+             *
+             * here passing the url string for loading data in pokemon detail scren
+             */
+             val navController = findNavController(it)
+            val bundle = bundleOf("pokemonId" to splittedPokemonImageID.replace("/",""))
+            navController.navigate(R.id.action_pokeMonSearchListFragment_to_pokeMonDetailFragment, bundle)
         }
         setAnimation(holder.itemView, position)
     }

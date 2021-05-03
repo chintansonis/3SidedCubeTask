@@ -33,5 +33,6 @@ class RestClient {
                 .build()
             return retrofit.create(PokemonWebService::class.java)
         }
+
     }
 }

@@ -10,9 +10,9 @@
         android:name="com.example.threesidedcube.ui.fragments.PokeMonDetailFragment"
         android:label="pokeMonDetailFragment"
         tools:layout="@layout/fragment_pokemon_details">
-        <!--<argument
-            android:name="RegistrationRequest"
-            app:argType="com.genius.me.api.models.RegistrationRequest" />-->
+        <argument
+            android:name="pokemonId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/pokeMonSearchListFragment"
