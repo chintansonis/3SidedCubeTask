@@ -1,34 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white_shadow"
+    android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_8"
-        android:layout_marginLeft="@dimen/padding_8"
-        android:layout_marginTop="@dimen/padding_8"
-        android:layout_marginEnd="@dimen/padding_8"
-        android:layout_marginRight="@dimen/padding_8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <include
+        android:id="@+id/includePagerLayout"
+        layout="@layout/include_viewpager_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtSearchPokemon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="test"
-            android:imeOptions="actionSearch"
-            android:inputType="textNoSuggestions"
-            android:selectAllOnFocus="true"
-             />
-    </com.google.android.material.textfield.TextInputLayout>
+    <include
+        android:id="@+id/includeBaseState"
+        layout="@layout/include_statics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

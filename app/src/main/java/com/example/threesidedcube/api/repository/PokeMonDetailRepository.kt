@@ -19,21 +19,21 @@ class PokeMonDetailRepository {
     private val pokemonDetailsResults = MutableSharedFlow<ResponseHandlerPokemonDetail>(replay = 1)
 
     /**
-     * Search repositories whose names match the query, exposed as a stream of data that will emit
-     * every time we get more data from the network.
+     *
+     * by passing pokemonId, we retreive the pokemon details from webservice
      */
 
     suspend fun getPokemonDetailsStream(pokemonId: String): Flow<ResponseHandlerPokemonDetail> {
-        requestPokeMonDetailFromWebService()
+        requestPokeMonDetailFromWebService(pokemonId)
         return pokemonDetailsResults
     }
 
 
-    private suspend fun requestPokeMonDetailFromWebService(): Boolean {
+    private suspend fun requestPokeMonDetailFromWebService(pokemonId: String): Boolean {
         var successful = false
         try {
             val response = RestClient.getPokeMonWebService()
-                .getPokemonDetails("21")
+                .getPokemonDetails(pokemonId)
             pokemonDetailsResults.emit(ResponseHandlerPokemonDetail.Success(response))
             successful = true
         } catch (exception: IOException) {

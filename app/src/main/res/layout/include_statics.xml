@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fillViewport="true"
+    android:paddingStart="@dimen/padding_16"
+    android:paddingEnd="@dimen/padding_16">
+
+    <LinearLayout
+        android:padding="@dimen/padding_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_6"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="@dimen/text_size_16" />
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:id="@+id/txtNameOfPokeMon"
+                android:paddingLeft="@dimen/padding_12"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                app:isBold="true"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14"
+                 />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/height_4"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/height"
+                android:textSize="@dimen/text_size_16" />
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:id="@+id/txtHeightValue"
+                android:paddingLeft="@dimen/padding_12"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                app:isBold="true"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/height_4"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weight"
+                android:textSize="@dimen/text_size_16" />
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:id="@+id/txtWeightValue"
+                android:paddingLeft="@dimen/padding_12"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                app:isBold="true"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/height_4"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/base_exp"
+                android:textSize="@dimen/text_size_16" />
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:id="@+id/txtBaseExpValue"
+                android:paddingLeft="@dimen/padding_12"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                app:isBold="true"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14"
+                />
+
+
+        </LinearLayout>
+
+        <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+            android:paddingLeft="@dimen/padding_12"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/height_20"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:isBold="true"
+            android:text="@string/base_stats"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_18"
+             />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_16"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/hp"
+                android:textSize="@dimen/text_size_14" />
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:id="@+id/textViewHP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14"
+                tools:text="55" />
+
+            <ProgressBar
+                android:id="@+id/progressBarHP"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="43" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/attack"
+                android:textSize="@dimen/text_size_14" />
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:id="@+id/textViewAttack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14"
+                tools:text="55" />
+
+            <ProgressBar
+                android:id="@+id/progressBarAttack"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="43" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/defense"
+                android:textSize="@dimen/text_size_14" />
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:id="@+id/textViewDefense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14"
+                tools:text="55" />
+
+            <ProgressBar
+                android:id="@+id/progressBarDefense"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="43" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sp_atk"
+                android:textSize="@dimen/text_size_14" />
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:id="@+id/textViewSpAtk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14"
+                tools:text="55" />
+
+            <ProgressBar
+                android:id="@+id/progressBarSpAtk"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="43" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sp_def"
+                android:textSize="@dimen/text_size_14" />
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:id="@+id/textViewSpDef"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14"
+                tools:text="55" />
+
+            <ProgressBar
+                android:id="@+id/progressBarSpDef"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="43" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/speed"
+                android:textSize="@dimen/text_size_14" />
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:id="@+id/textViewSpeed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14"
+                tools:text="55" />
+
+            <ProgressBar
+                android:id="@+id/progressBarSpeed"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="43" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/total"
+                android:textSize="@dimen/text_size_14" />
+
+            <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+                android:id="@+id/textViewTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_14"
+                tools:text="55" />
+
+            <ProgressBar
+                android:id="@+id/progressBarTotal"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:indeterminate="false"
+                android:max="600"
+                android:progress="43" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

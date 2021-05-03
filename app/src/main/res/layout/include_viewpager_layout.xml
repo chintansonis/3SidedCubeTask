@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_16">
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pagerSlider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_200"
+        android:layout_marginBottom="@dimen/padding_8" />
+
+    <com.example.threesidedcube.customviews.ThreeSidedCubeCustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pagerSlider"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/slide_right_to_view_more_images_of_pokemon"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_size_16" />
+
+
+</RelativeLayout>

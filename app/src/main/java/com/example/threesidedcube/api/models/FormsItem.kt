@@ -1,0 +1,8 @@
+package com.example.threesidedcube.api.models
+
+import com.google.gson.annotations.SerializedName
+
+data class FormsItem(@SerializedName("name")
+                     val name: String = "",
+                     @SerializedName("url")
+                     val url: String = "")
